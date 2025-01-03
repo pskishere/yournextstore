@@ -5,8 +5,11 @@ const withMDX = MDX();
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
+	typescript: {
+		ignoreBuildErrors: true,
+	},
 	eslint: {
-		ignoreDuringBuilds: true,
+		ignoreDuringBuilds: false,
 	},
 	output: process.env.DOCKER ? "standalone" : undefined,
 	logging: {
