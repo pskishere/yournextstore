@@ -15,17 +15,17 @@ const sections = [
 	{
 		header: "Support",
 		links: [
-			{
-				label: "Features",
-				href: "https://yournextstore.com/#features",
-			},
-			{
-				label: "Pricing",
-				href: "https://yournextstore.com/#pricing",
-			},
+			// {
+			// 	label: "Features",
+			// 	href: "https://yournextstore.com/#features",
+			// },
+			// {
+			// 	label: "Pricing",
+			// 	href: "https://yournextstore.com/#pricing",
+			// },
 			{
 				label: "Contact Us",
-				href: "mailto:hi@yournextstore.com",
+				href: "mailto:pskishere@gmail.com",
 			},
 		],
 	},
@@ -37,12 +37,12 @@ export async function Footer() {
 	return (
 		<footer className="w-full bg-neutral-50 p-6 text-neutral-800 md:py-12">
 			<div className="container flex max-w-7xl flex-row flex-wrap justify-center gap-16 text-sm sm:justify-between">
-				<div className="">
+				{/* <div className="">
 					<div className="flex w-full max-w-sm flex-col gap-2">
 						<h3 className="font-semibold">{t("newsletterTitle")}</h3>
 						<Newsletter />
 					</div>
-				</div>
+				</div> */}
 
 				<nav className="grid grid-cols-2 gap-16">
 					{sections.map((section) => (
@@ -63,11 +63,11 @@ export async function Footer() {
 			</div>
 			<div className="container mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-neutral-500 md:flex-row">
 				<div>
-					<p>© 2024 Your Next Store</p>
+					<p>© 2025 GoDesign</p>
 					<p>Delightful commerce for everyone</p>
 				</div>
 				<div className="flex items-center gap-4">
-					<YnsLink
+					{/* <YnsLink
 						className="inline-flex items-center gap-1 transition-colors hover:text-neutral-700"
 						href="https://x.com/zaiste"
 					>
@@ -80,7 +80,7 @@ export async function Footer() {
 					>
 						<TwitterIcon className="h-4 w-4" /> @typeofweb
 						<span className="sr-only">Twitter</span>
-					</YnsLink>
+					</YnsLink> */}
 				</div>
 			</div>
 		</footer>

@@ -238,7 +238,7 @@ const PaymentForm = ({
 					}
 				}}
 			/>
-			<AddressElement
+			{/* <AddressElement
 				options={{
 					mode: "shipping",
 					fields: { phone: "always" },
@@ -268,7 +268,7 @@ const PaymentForm = ({
 					});
 				}}
 				onReady={() => setIsAddressReady(true)}
-			/>
+			/> */}
 
 			{readyToRender && !allProductsDigital && (
 				<ShippingRatesSection

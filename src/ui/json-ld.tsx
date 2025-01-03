@@ -51,11 +51,11 @@ export const accountToWebsiteJsonLd = ({
 	return {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		name: account?.business_profile?.name ?? "Your Next Store",
-		url: account?.business_profile?.url ?? "https://yournextstore.com",
+		name: account?.business_profile?.name ?? "GoDesign",
+		url: account?.business_profile?.url ?? "https://godgn.art",
 		mainEntityOfPage: {
 			"@type": "WebPage",
-			url: account?.business_profile?.url ?? "https://yournextstore.com",
+			url: account?.business_profile?.url ?? "https://godgn.art",
 		},
 		...(logoUrl && {
 			image: {
@@ -65,8 +65,8 @@ export const accountToWebsiteJsonLd = ({
 		}),
 		publisher: {
 			"@type": "Organization",
-			name: account?.business_profile?.name ?? "Your Next Store",
-			url: account?.business_profile?.url ?? "https://yournextstore.com",
+			name: account?.business_profile?.name ?? "GoDesign",
+			url: account?.business_profile?.url ?? "https://godgn.art",
 		},
 	};
 };

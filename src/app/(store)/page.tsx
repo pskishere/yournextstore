@@ -37,7 +37,8 @@ export default async function Home() {
 						className="rounded"
 						height={450}
 						width={450}
-						src="https://files.stripe.com/links/MDB8YWNjdF8xT3BaeG5GSmNWbVh6bURsfGZsX3Rlc3RfaDVvWXowdU9ZbWlobUIyaHpNc1hCeDM200NBzvUjqP"
+						// src="https://files.stripe.com/links/MDB8YWNjdF8xT3BaeG5GSmNWbVh6bURsfGZsX3Rlc3RfaDVvWXowdU9ZbWlobUIyaHpNc1hCeDM200NBzvUjqP"
+						src="/godn.png"
 						style={{
 							objectFit: "cover",
 						}}
@@ -49,11 +50,11 @@ export default async function Home() {
 			<ProductList products={products} />
 
 			<section className="w-full py-8">
-				<div className="grid gap-8 lg:grid-cols-2">
+				{/* <div className="grid gap-8 lg:grid-cols-2">
 					{StoreConfig.categories.map(({ slug, image: src }) => (
 						<CategoryBox key={slug} categorySlug={slug} src={src} />
 					))}
-				</div>
+				</div> */}
 			</section>
 		</main>
 	);
