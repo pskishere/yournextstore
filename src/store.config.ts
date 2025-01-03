@@ -4,7 +4,7 @@ import ApparelImage from "@/images/apparel.jpg";
 export const config = {
 	categories: [
 		{ name: "Illustrations", slug: "illustrations", image: ApparelImage },
-		// { name: "Accessories", slug: "accessories", image: AccessoriesImage },
+		{ name: "RedPacket", slug: "redpacket", image: AccessoriesImage },
 	],
 
 	// social: {
