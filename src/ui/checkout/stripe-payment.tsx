@@ -77,7 +77,7 @@ const PaymentForm = ({
 	const [isLoading, setIsLoading] = useState(false);
 	const [isTransitioning, transition] = useTransition();
 	const [isLinkAuthenticationReady, setIsLinkAuthenticationReady] = useState(false);
-	const [isAddressReady, setIsAddressReady] = useState(false);
+	const [isAddressReady, setIsAddressReady] = useState(true);
 	const [isPaymentReady, setIsPaymentReady] = useState(false);
 	const [billingAddressValues, setBillingAddressValues] = useState<AddressSchema>({
 		name: "",
