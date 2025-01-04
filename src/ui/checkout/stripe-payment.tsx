@@ -77,7 +77,7 @@ const PaymentForm = ({
 	const [isLoading, setIsLoading] = useState(false);
 	const [isTransitioning, transition] = useTransition();
 	const [isLinkAuthenticationReady, setIsLinkAuthenticationReady] = useState(false);
-	const [isAddressReady, setIsAddressReady] = useState(true);
+	const [isAddressReady, setIsAddressReady] = useState(false);
 	const [isPaymentReady, setIsPaymentReady] = useState(false);
 	const [billingAddressValues, setBillingAddressValues] = useState<AddressSchema>({
 		name: "",
@@ -238,7 +238,7 @@ const PaymentForm = ({
 					}
 				}}
 			/>
-			{/* <AddressElement
+			<AddressElement
 				options={{
 					mode: "shipping",
 					fields: { phone: "always" },
@@ -268,7 +268,7 @@ const PaymentForm = ({
 					});
 				}}
 				onReady={() => setIsAddressReady(true)}
-			/> */}
+			/>
 
 			{readyToRender && !allProductsDigital && (
 				<ShippingRatesSection
@@ -286,7 +286,7 @@ const PaymentForm = ({
 				/>
 			)}
 
-			{!readyToRender && (
+			{readyToRender && (
 				<Label
 					className="flex flex-row items-center gap-x-2"
 					aria-controls="billingAddressCollapsibleContent"
@@ -304,7 +304,7 @@ const PaymentForm = ({
 				</Label>
 			)}
 
-			{!readyToRender && (
+			{readyToRender && (
 				<Collapsible className="" open={!sameAsShipping}>
 					<CollapsibleContent id="billingAddressCollapsibleContent" className="CollapsibleContent">
 						<fieldset
