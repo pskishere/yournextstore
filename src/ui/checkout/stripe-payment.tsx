@@ -286,7 +286,7 @@ const PaymentForm = ({
 				/>
 			)}
 
-			{readyToRender && (
+			{!readyToRender && (
 				<Label
 					className="flex flex-row items-center gap-x-2"
 					aria-controls="billingAddressCollapsibleContent"
@@ -304,7 +304,7 @@ const PaymentForm = ({
 				</Label>
 			)}
 
-			{readyToRender && (
+			{!readyToRender && (
 				<Collapsible className="" open={!sameAsShipping}>
 					<CollapsibleContent id="billingAddressCollapsibleContent" className="CollapsibleContent">
 						<fieldset
