@@ -119,58 +119,59 @@ const PaymentForm = ({
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
+		console.log("elements", elements);
 
 		if (!stripe || !elements) {
 			console.warn("Stripe or Elements not ready");
 			return;
 		}
-		const shippingAddressElement = elements.getElement("address");
+		// const shippingAddressElement = elements.getElement("address");
 
-		if (!shippingAddressElement) {
-			console.warn("Address Element expected to exist but not found");
-			return;
-		}
+		// if (!shippingAddressElement) {
+		// 	console.warn("Address Element expected to exist but not found");
+		// 	return;
+		// }
 
 		try {
-			const shippingAddressObject = await shippingAddressElement.getValue();
-			const shippingAddress: Partial<AddressSchema> = {
-				name: shippingAddressObject.value.name,
-				city: shippingAddressObject.value.address.city,
-				country: shippingAddressObject.value.address.country,
-				line1: shippingAddressObject.value.address.line1,
-				line2: shippingAddressObject.value.address.line2,
-				postalCode: shippingAddressObject.value.address.postal_code,
-				state: shippingAddressObject.value.address.state,
-				phone: shippingAddressObject.value.phone,
-			};
+			// const shippingAddressObject = await shippingAddressElement.getValue();
+			// const shippingAddress: Partial<AddressSchema> = {
+			// 	name: shippingAddressObject.value.name,
+			// 	city: shippingAddressObject.value.address.city,
+			// 	country: shippingAddressObject.value.address.country,
+			// 	line1: shippingAddressObject.value.address.line1,
+			// 	line2: shippingAddressObject.value.address.line2,
+			// 	postalCode: shippingAddressObject.value.address.postal_code,
+			// 	state: shippingAddressObject.value.address.state,
+			// 	phone: shippingAddressObject.value.phone,
+			// };
 
-			const billingAddress: Partial<AddressSchema> = sameAsShipping ? shippingAddress : billingAddressValues;
+			// const billingAddress: Partial<AddressSchema> = sameAsShipping ? shippingAddress : billingAddressValues;
 
-			const validatedBillingAddress = addressSchema.safeParse(billingAddress);
-			const validatedShippingAddress = addressSchema.safeParse(shippingAddress);
+			// const validatedBillingAddress = addressSchema.safeParse(billingAddress);
+			// const validatedShippingAddress = addressSchema.safeParse(shippingAddress);
 
-			// when billing address form is visible we display billing errors inline under fields
-			if (!validatedBillingAddress.success && !sameAsShipping) {
-				setFieldErrors(validatedBillingAddress.error?.flatten().fieldErrors ?? {});
-			} else {
-				setFieldErrors({});
-			}
+			// // when billing address form is visible we display billing errors inline under fields
+			// if (!validatedBillingAddress.success && !sameAsShipping) {
+			// 	setFieldErrors(validatedBillingAddress.error?.flatten().fieldErrors ?? {});
+			// } else {
+			// 	setFieldErrors({});
+			// }
 
-			if (!validatedShippingAddress.success || !validatedBillingAddress.success) {
-				console.error("Validation failed", {
-					validatedShippingAddress,
-					validatedBillingAddress,
-				});
-				setFormErrorMessage(t("fillRequiredFields"));
-				return;
-			}
+			// if (!validatedShippingAddress.success || !validatedBillingAddress.success) {
+			// 	console.error("Validation failed", {
+			// 		validatedShippingAddress,
+			// 		validatedBillingAddress,
+			// 	});
+			// 	setFormErrorMessage(t("fillRequiredFields"));
+			// 	return;
+			// }
 
 			setIsLoading(true);
-			if (validatedBillingAddress.data.taxId) {
-				await saveTaxIdAction({
-					taxId: validatedBillingAddress.data.taxId,
-				});
-			}
+			// if (validatedBillingAddress.data.taxId) {
+			// 	await saveTaxIdAction({
+			// 		taxId: validatedBillingAddress.data.taxId,
+			// 	});
+			// }
 
 			const result = await stripe.confirmPayment({
 				elements,
@@ -180,30 +181,33 @@ const PaymentForm = ({
 					payment_method_data: {
 						billing_details: {
 							email: email ?? undefined,
-							name: validatedBillingAddress.data.name,
-							phone: validatedBillingAddress.data.phone ?? undefined,
-							address: {
-								city: validatedBillingAddress.data.city,
-								country: validatedBillingAddress.data.country,
-								line1: validatedBillingAddress.data.line1,
-								line2: validatedBillingAddress.data.line2 ?? "",
-								postal_code: validatedBillingAddress.data.postalCode,
-								state: validatedBillingAddress.data.state ?? "",
-							},
+							// name: validatedBillingAddress.data.name,
+							// phone: validatedBillingAddress.data.phone ?? undefined,
+							// address: {
+							// 	city: validatedBillingAddress.data.city,
+							// 	country: validatedBillingAddress.data.country,
+							// 	line1: validatedBillingAddress.data.line1,
+							// 	line2: validatedBillingAddress.data.line2 ?? "",
+							// 	postal_code: validatedBillingAddress.data.postalCode,
+							// 	state: validatedBillingAddress.data.state ?? "",
+							// },
+							name: "",
+							phone: "",
+							address: {},
 						},
 					},
-					shipping: {
-						name: validatedShippingAddress.data.name,
-						phone: validatedShippingAddress.data.phone ?? undefined,
-						address: {
-							city: validatedShippingAddress.data.city,
-							country: validatedShippingAddress.data.country,
-							line1: validatedShippingAddress.data.line1,
-							line2: validatedShippingAddress.data.line2 ?? "",
-							postal_code: validatedShippingAddress.data.postalCode,
-							state: validatedShippingAddress.data.state ?? "",
-						},
-					},
+					// shipping: {
+					// 	name: validatedShippingAddress.data.name,
+					// 	phone: validatedShippingAddress.data.phone ?? undefined,
+					// 	address: {
+					// 		city: validatedShippingAddress.data.city,
+					// 		country: validatedShippingAddress.data.country,
+					// 		line1: validatedShippingAddress.data.line1,
+					// 		line2: validatedShippingAddress.data.line2 ?? "",
+					// 		postal_code: validatedShippingAddress.data.postalCode,
+					// 		state: validatedShippingAddress.data.state ?? "",
+					// 	},
+					// },
 				},
 			});
 
@@ -235,10 +239,11 @@ const PaymentForm = ({
 				onChange={(event) => {
 					if (event.complete) {
 						setEmail(event.value.email);
+						setIsAddressReady(true);
 					}
 				}}
 			/>
-			<AddressElement
+			{/* <AddressElement
 				options={{
 					mode: "shipping",
 					fields: { phone: "always" },
@@ -268,9 +273,9 @@ const PaymentForm = ({
 					});
 				}}
 				onReady={() => setIsAddressReady(true)}
-			/>
+			/> */}
 
-			{readyToRender && !allProductsDigital && (
+			{/* {readyToRender && !allProductsDigital && (
 				<ShippingRatesSection
 					locale={locale}
 					onChange={(value) => {
@@ -284,9 +289,9 @@ const PaymentForm = ({
 					value={shippingRateId}
 					shippingRates={shippingRates}
 				/>
-			)}
+			)} */}
 
-			{readyToRender && (
+			{/* {readyToRender && (
 				<Label
 					className="flex flex-row items-center gap-x-2"
 					aria-controls="billingAddressCollapsibleContent"
@@ -302,9 +307,9 @@ const PaymentForm = ({
 					/>
 					{allProductsDigital ? t("billingSameAsPayment") : t("billingSameAsShipping")}
 				</Label>
-			)}
+			)} */}
 
-			{readyToRender && (
+			{/* {readyToRender && (
 				<Collapsible className="" open={!sameAsShipping}>
 					<CollapsibleContent id="billingAddressCollapsibleContent" className="CollapsibleContent">
 						<fieldset
@@ -323,14 +328,15 @@ const PaymentForm = ({
 						</fieldset>
 					</CollapsibleContent>
 				</Collapsible>
-			)}
+			)} */}
 
 			<PaymentElement
 				onReady={() => setIsPaymentReady(true)}
 				options={{
 					fields: {
 						billingDetails: {
-							address: "never",
+							email: "never",
+							// address: "never",
 						},
 					},
 				}}
@@ -347,14 +353,20 @@ const PaymentForm = ({
 					type="submit"
 					className="w-full rounded-full text-lg"
 					size="lg"
-					aria-disabled={isBillingAddressPending || isLoading || isTransitioning}
+					// aria-disabled={isBillingAddressPending || isLoading || isTransitioning}
+					// onClick={(e) => {
+					// 	if (isBillingAddressPending || isLoading || isTransitioning) {
+					// 		e.preventDefault();
+					// 	}
+					// }}
+					aria-disabled={isLoading || isTransitioning}
 					onClick={(e) => {
-						if (isBillingAddressPending || isLoading || isTransitioning) {
+						if (isLoading || isTransitioning) {
 							e.preventDefault();
 						}
 					}}
 				>
-					{isBillingAddressPending || isLoading || isTransitioning ? (
+					{isLoading || isTransitioning ? (
 						<Loader2 className="mr-2 h-4 w-4 animate-spin" />
 					) : (
 						t("payNowButton")
