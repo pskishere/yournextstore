@@ -197,6 +197,7 @@ export default async function OrderDetailsPage(props: {
 							<h3 className="font-semibold leading-none text-neutral-700">{t("billingAddress")}</h3>
 							<p className="mt-3 text-sm">
 								{[
+									order.order.payment_method.billing_details.email,
 									order.order.payment_method.billing_details.name,
 									order.order.payment_method.billing_details.address.line1,
 									order.order.payment_method.billing_details.address.line2,

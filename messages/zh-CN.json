@@ -100,6 +100,7 @@
 	"/order.page.detailsTitle": "订单详情",
 	"/order.page.shippingAddress": "送货地址",
 	"/order.page.billingAddress": "账单地址",
+	"/order.page.email": "邮箱",
 	"/order.page.taxId": "税号",
 	"/order.page.paymentMethod": "支付方式",
 	"/order.page.cardBrand": "支付卡品牌",

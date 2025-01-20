@@ -99,6 +99,7 @@
 	"/order.page.detailsTitle": "Bestelldetails",
 	"/order.page.shippingAddress": "Lieferadresse",
 	"/order.page.billingAddress": "Rechnungsadresse",
+	"/order.page.email": "Email",
 	"/order.page.taxId": "Steuer-ID",
 	"/order.page.paymentMethod": "Zahlungsart",
 	"/order.page.cardBrand": "Kreditkarte",

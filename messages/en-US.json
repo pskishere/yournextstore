@@ -101,6 +101,7 @@
 	"/order.page.detailsTitle": "Order details",
 	"/order.page.shippingAddress": "Shipping address",
 	"/order.page.billingAddress": "Billing address",
+	"/order.page.email": "Email",
 	"/order.page.taxId": "Tax ID",
 	"/order.page.paymentMethod": "Payment method",
 	"/order.page.cardBrand": "Card brand",

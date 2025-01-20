@@ -100,6 +100,7 @@
 	"/order.page.detailsTitle": "注文詳細",
 	"/order.page.shippingAddress": "配送先住所",
 	"/order.page.billingAddress": "請求先住所",
+	"/order.page.email": "メールアドレス",
 	"/order.page.taxId": "税番号",
 	"/order.page.paymentMethod": "支払い方法",
 	"/order.page.cardBrand": "カード会社",

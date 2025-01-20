@@ -100,6 +100,7 @@
 	"/order.page.detailsTitle": "Détails de la commande",
 	"/order.page.shippingAddress": "Adresse de livraison",
 	"/order.page.billingAddress": "Adresse de facturation",
+	"/order.page.email": "Email",
 	"/order.page.taxId": "Numéro de taxe",
 	"/order.page.paymentMethod": "Méthode de paiement",
 	"/order.page.cardBrand": "Marque de la carte",
