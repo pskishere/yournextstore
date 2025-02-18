@@ -5,6 +5,7 @@ export const config = {
 	categories: [
 		{ name: "Illustrations", slug: "illustrations", image: ApparelImage },
 		{ name: "RedPacket", slug: "redpacket", image: AccessoriesImage },
+		{ name: "Poster", slug: "poster", image: AccessoriesImage },
 	],
 
 	// social: {
